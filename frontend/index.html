@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgriCode - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="js/config.js"></script>
+    <script src="js/mockData.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/i18n.js"></script>
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+  </head>
+
+  <body class="min-h-screen bg-gray-50">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 bg-white border-b z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="text-xl font-semibold">AgriCode</a>
+                    <span class="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full">Beta</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <div class="flex items-center space-x-4">
+                        <a href="/" class="text-gray-600 hover:text-gray-900 font-medium" data-i18n="nav.home">Home</a>
+                        <a href="/prediction.html" class="text-gray-600 hover:text-gray-900" data-i18n="nav.prediction">Prediction</a>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <!-- Language Selector -->
+                        <select id="language-selector" class="text-sm border rounded-md px-2 py-1">
+                            <option value="en">English</option>
+                            <option value="hi">हिंदी</option>
+                            <option value="mr">मराठी</option>
+                        </select>
+                        <!-- User Section -->
+                        <div id="user-section" class="flex items-center space-x-4">
+                            <div id="user-greeting" class="hidden">
+                                <span class="text-gray-600" data-i18n="nav.greeting">Hello,</span>
+                                <span id="username" class="font-medium"></span>
+                            </div>
+                            <button id="sign-in-btn" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" data-i18n="nav.signIn">
+                                Sign In
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-28 pb-20 md:py-32 overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col items-center text-center space-y-4 animate__animated animate__fadeIn">
+                <span class="px-3 py-1 text-sm bg-blue-100 text-blue-800 rounded-full mb-2" data-i18n="hero.badge">Future of Agricultural Pricing</span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight max-w-3xl" data-i18n="hero.title">
+                    Predict Agricultural Commodity Prices with Precision
+                </h1>
+                <p class="text-gray-600 text-lg md:text-xl max-w-2xl mt-2" data-i18n="hero.subtitle">
+                    Leverage advanced AI to forecast market trends and make data-driven decisions
+                    for your agricultural business.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 mt-6">
+                    <a href="/prediction.html" class="px-8 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors">
+                        Get Prediction
+                    </a>
+                    <button class="px-8 py-3 border border-gray-300 rounded-full hover:bg-gray-50 transition-colors">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Background design elements -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+            <div class="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-blue-100 rounded-full filter blur-3xl animate-float"></div>
+            <div class="absolute top-1/3 -right-1/4 w-1/2 h-1/2 bg-blue-50 rounded-full filter blur-3xl"></div>
+        </div>
+    </section>
+
+    <!-- Commodity Selection Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col space-y-4 text-center mb-10 animate__animated animate__slideInUp">
+                <h2 class="text-3xl font-bold tracking-tight" data-i18n="commodities.title">Select a Commodity</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto" data-i18n="commodities.subtitle">
+                    Choose from a variety of agricultural commodities to view historical prices.
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-sm border p-6">
+                <!-- Category Tabs -->
+                <div class="flex space-x-4 mb-6">
+                    <button class="category-tab active px-4 py-2 rounded-lg" data-category="all" data-i18n="commodities.categories.all">All</button>
+                    <button class="category-tab px-4 py-2 rounded-lg" data-category="vegetables" data-i18n="commodities.categories.vegetables">Vegetables</button>
+                    <button class="category-tab px-4 py-2 rounded-lg" data-category="oilseeds" data-i18n="commodities.categories.oilseeds">Oil Seeds</button>
+                </div>
+                
+                <div id="commodity-selector" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                    <!-- Commodity cards will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Historical Data Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="bg-white rounded-xl shadow-sm border p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-semibold" id="chart-title">Price History</h2>
+                    <div class="flex gap-2">
+                        <button class="timerange-btn px-3 py-1 text-sm rounded-md hover:bg-gray-100" data-range="1m">1m</button>
+                        <button class="timerange-btn px-3 py-1 text-sm rounded-md hover:bg-gray-100" data-range="3m">3m</button>
+                        <button class="timerange-btn px-3 py-1 text-sm rounded-md hover:bg-gray-100" data-range="6m">6m</button>
+                        <button class="timerange-btn px-3 py-1 text-sm rounded-md hover:bg-gray-100" data-range="1y">1y</button>
+                        <button class="timerange-btn px-3 py-1 text-sm rounded-md bg-blue-100 text-blue-800" data-range="all">All</button>
+                    </div>
+                </div>
+                <div class="h-[600px] relative">
+                    <canvas id="historical-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col space-y-4 text-center mb-10">
+                <h2 class="text-3xl font-bold tracking-tight">Advanced Forecasting Features</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                    Our platform provides sophisticated tools for agricultural price forecasting.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl border shadow-sm transition-all hover:shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <span class="text-2xl">🔮</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">AI-Powered Predictions</h3>
+                    <p class="text-gray-600">Leverage machine learning algorithms to forecast agricultural commodity prices with high accuracy.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl border shadow-sm transition-all hover:shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <span class="text-2xl">📊</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Interactive Charts</h3>
+                    <p class="text-gray-600">Visualize historical price trends and future predictions with customizable interactive charts.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl border shadow-sm transition-all hover:shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <span class="text-2xl">📱</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Mobile Responsive</h3>
+                    <p class="text-gray-600">Access price forecasts on any device, from desktop to smartphone, with a seamless experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Footer -->
+    <footer class="py-10 border-t">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <span class="text-xl font-semibold tracking-tight">AgriCode</span>
+                    <span class="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full">Beta</span>
+                </div>
+                
+                <div class="flex space-x-4 text-sm text-gray-600">
+                    <a href="#" class="hover:text-gray-900 transition-colors" data-i18n="footer.privacy">Privacy</a>
+                    <a href="#" class="hover:text-gray-900 transition-colors" data-i18n="footer.terms">Terms</a>
+                    <a href="#" class="hover:text-gray-900 transition-colors" data-i18n="footer.contact">Contact</a>
+                </div>
+            </div>
+            
+            <div class="mt-6 text-center text-sm text-gray-600">
+                &copy; <span id="current-year"></span> AgriCode. <span data-i18n="footer.rights">All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+  </body>
+</html>
