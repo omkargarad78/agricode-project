@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | AgriCode</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="js/i18n.js"></script>
+</head>
+<body class="min-h-screen bg-gray-50">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 bg-white border-b z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-2">
+                    <a href="/" class="text-xl font-semibold">AgriCode</a>
+                    <span class="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full">Beta</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <!-- Language Selector -->
+                    <div class="relative">
+                        <button id="language-button" class="flex items-center space-x-1 text-sm px-3 py-2 rounded-lg hover:bg-gray-50">
+                            <span class="text-lg">🌐</span>
+                            <span id="current-language">English</span>
+                        </button>
+                        <div id="language-dropdown" class="hidden absolute top-full right-0 mt-1 bg-white rounded-lg shadow-lg border py-2 w-36">
+                            <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-50" data-lang="en">English</a>
+                            <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-50" data-lang="hi">हिंदी</a>
+                            <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-50" data-lang="mr">मराठी</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-16 text-center">
+        <div class="max-w-lg mx-auto">
+            <img src="/images/404-monster.png" alt="404 Error" class="w-64 mx-auto mb-8 animate__animated animate__bounce">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4" data-i18n="error404.title">Oops! Page Not Found</h1>
+            <p class="text-gray-600 mb-8" data-i18n="error404.message">The page you're looking for doesn't exist or has been moved.</p>
+            <a href="/" class="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" data-i18n="error404.backHome">
+                Go Back Home
+            </a>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
