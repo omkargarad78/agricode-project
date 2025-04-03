@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-i18n="prediction.pageTitle">Price Prediction | AgriCode</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="js/config.js"></script>
+    <script src="js/mockData.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/i18n.js"></script>
+  </head>
+
+  <body class="min-h-screen bg-gray-50">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 bg-white border-b z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-2">
+                    <a href="/" class="text-xl font-semibold">AgriCode</a>
+                    <span class="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full" data-i18n="common.beta">Beta</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <div class="flex items-center space-x-4">
+                        <a href="/" class="text-gray-600 hover:text-gray-900" data-i18n="nav.home">Home</a>
+                        <a href="/prediction.html" class="text-gray-600 hover:text-gray-900" data-i18n="nav.prediction">Prediction</a>
+                    </div>
+                    <!-- Language Selector -->
+                    <div class="relative">
+                        <button id="language-button" class="flex items-center space-x-1 text-sm px-3 py-2 rounded-lg hover:bg-gray-50">
+                            <span class="text-lg">🌐</span>
+                            <span id="current-language">English</span>
+                        </button>
+                        <div id="language-dropdown" class="hidden absolute top-full right-0 mt-1 bg-white rounded-lg shadow-lg border py-2 w-36">
+                            <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-50" data-lang="en">English</a>
+                            <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-50" data-lang="hi">हिंदी</a>
+                            <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-50" data-lang="mr">मराठी</a>
+                        </div>
+                    </div>
+                    <!-- User Section -->
+                    <div id="user-section" class="flex items-center space-x-4">
+                        <div id="user-greeting" class="hidden">
+                            <span class="text-gray-600" data-i18n="nav.greeting">Hello,</span>
+                            <span id="username" class="font-medium"></span>
+                        </div>
+                        <button id="sign-in-btn" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" data-i18n="nav.signIn">
+                            Sign In
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Prediction Section -->
+    <section class="pt-28 pb-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col space-y-2 text-center mb-8">
+                <h1 class="text-3xl font-bold tracking-tight" data-i18n="prediction.title">Price Prediction</h1>
+                <p class="text-gray-600" data-i18n="prediction.subtitle">
+                    Select a commodity and customize parameters to get accurate price forecasts
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Sidebar with controls -->
+                <div class="lg:col-span-1 space-y-6">
+                    <!-- Commodity Selection -->
+                    <div class="bg-white rounded-xl border shadow-sm p-6">
+                        <h2 class="text-lg font-semibold mb-4" data-i18n="prediction.selectCommodity">Select Commodity</h2>
+                        <!-- Category Tabs -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <button class="category-tab active px-3 py-1 rounded-full text-sm" data-category="all" data-i18n="commodities.categories.all">All</button>
+                            <button class="category-tab px-3 py-1 rounded-full text-sm" data-category="vegetables" data-i18n="commodities.categories.vegetables">Vegetables</button>
+                            <button class="category-tab px-3 py-1 rounded-full text-sm" data-category="oilseeds" data-i18n="commodities.categories.oilseeds">Oil Seeds</button>
+                        </div>
+                        <div id="commodity-selector" class="grid grid-cols-1 gap-2">
+                            <!-- Commodity options will be inserted here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Prediction Parameters -->
+                    <div class="bg-white rounded-xl border shadow-sm p-6 space-y-5">
+                        <h2 class="text-lg font-semibold" data-i18n="prediction.parameters">Prediction Parameters</h2>
+                        
+                        <div class="space-y-2">
+                            <h3 class="text-sm font-medium" data-i18n="prediction.timeframe">Prediction Timeframe</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="timeframe-btn px-3 py-1 bg-blue-600 text-white rounded-full text-sm" data-days="7" data-i18n="prediction.days.7">7 Days</button>
+                                <button class="timeframe-btn px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-gray-50" data-days="14" data-i18n="prediction.days.14">14 Days</button>
+                                <button class="timeframe-btn px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-gray-50" data-days="30" data-i18n="prediction.days.30">30 Days</button>
+                                <button class="timeframe-btn px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-gray-50" data-days="60" data-i18n="prediction.days.60">60 Days</button>
+                            </div>
+                        </div>
+                        
+                        <div class="pt-4">
+                            <button onclick="generatePrediction()" class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" data-i18n="prediction.generate">
+                                Generate Prediction
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Market Analysis -->
+                    <div class="bg-white rounded-xl border shadow-sm p-6">
+                        <h2 class="text-lg font-semibold mb-4" data-i18n="prediction.marketAnalysis.title">Market Analysis</h2>
+                        <p class="text-sm text-gray-600 mb-4" id="market-trend" data-i18n="prediction.marketAnalysis.trend"></p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm" data-i18n="prediction.marketAnalysis.supplyPressure">Supply Pressure</span>
+                                <div class="w-32 bg-gray-200 h-2 rounded-full overflow-hidden">
+                                    <div class="h-full bg-yellow-500" id="supply-pressure"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm" data-i18n="prediction.marketAnalysis.demandGrowth">Demand Growth</span>
+                                <div class="w-32 bg-gray-200 h-2 rounded-full overflow-hidden">
+                                    <div class="h-full bg-green-500" id="demand-growth"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm" data-i18n="prediction.marketAnalysis.volatility">Market Volatility</span>
+                                <div class="w-32 bg-gray-200 h-2 rounded-full overflow-hidden">
+                                    <div class="h-full bg-red-500" id="market-volatility"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Main content -->
+                <div class="lg:col-span-2 space-y-6">
+                    <!-- Prediction Chart -->
+                    <div class="bg-white rounded-xl border shadow-sm p-6">
+                        <div class="flex space-x-2 mb-4">
+                            <button onclick="switchTab('prediction')" class="flex-1 px-4 py-2 rounded-lg bg-blue-600 text-white" data-i18n="prediction.tabs.prediction">Price Prediction</button>
+                            <button onclick="switchTab('historical')" class="flex-1 px-4 py-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200" data-i18n="prediction.tabs.historical">Historical Data</button>
+                        </div>
+                        
+                        <div id="prediction-tab">
+                            <canvas id="prediction-chart"></canvas>
+                        </div>
+                        
+                        <div id="historical-tab" class="hidden">
+                            <canvas id="historical-chart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Prediction Insights -->
+                    <div class="bg-white rounded-xl border shadow-sm p-6">
+                        <h2 class="text-lg font-semibold mb-4" data-i18n="prediction.insights.title">Prediction Insights</h2>
+                        <div class="space-y-4">
+                            <p class="text-sm" id="prediction-insight"></p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
+                                <div class="border rounded-lg p-4">
+                                    <h3 class="text-sm font-medium mb-1" data-i18n="prediction.insights.confidence">Trend Confidence</h3>
+                                    <p class="text-2xl font-semibold" id="trend-confidence">-</p>
+                                </div>
+                                
+                                <div class="border rounded-lg p-4">
+                                    <h3 class="text-sm font-medium mb-1" data-i18n="prediction.insights.minPrice">Min Price</h3>
+                                    <p class="text-2xl font-semibold" id="min-price-prediction">-</p>
+                                </div>
+                                
+                                <div class="border rounded-lg p-4">
+                                    <h3 class="text-sm font-medium mb-1" data-i18n="prediction.insights.maxPrice">Max Price</h3>
+                                    <p class="text-2xl font-semibold" id="max-price-prediction">-</p>
+                                </div>
+                            </div>
+                            
+                            <div class="pt-2">
+                                <h3 class="text-sm font-medium mb-2" data-i18n="prediction.insights.factors">Key Factors Affecting Price</h3>
+                                <ul class="text-sm space-y-1 pl-5 list-disc" id="key-factors">
+                                    <!-- Key factors will be inserted here -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 border-t">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <span class="text-xl font-semibold tracking-tight">AgriCode</span>
+                    <span class="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full" data-i18n="common.beta">Beta</span>
+                </div>
+                
+                <div class="flex space-x-4 text-sm text-gray-600">
+                    <a href="/privacy.html" class="hover:text-gray-900 transition-colors" data-i18n="footer.privacy">Privacy</a>
+                    <a href="/terms.html" class="hover:text-gray-900 transition-colors" data-i18n="footer.terms">Terms</a>
+                    <a href="/contact.html" class="hover:text-gray-900 transition-colors" data-i18n="footer.contact">Contact</a>
+                </div>
+            </div>
+            
+            <div class="mt-6 text-center text-sm text-gray-600">
+                &copy; <span id="current-year"></span> AgriCode. <span data-i18n="footer.rights">All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html> 
