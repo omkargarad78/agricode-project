@@ -176,16 +176,6 @@ const translations = {
                 minPrice: 'न्यूनतम मूल्य',
                 maxPrice: 'अधिकतम मूल्य',
                 factors: 'मूल्य को प्रभावित करने वाले प्रमुख कारक'
-            },
-            historical: 'ऐतिहासिक',
-            predicted: 'पूर्वानुमानित',
-            generating: 'पूर्वानुमान उत्पन्न हो रहा है...',
-            timeRanges: {
-                '1m': '1 महीना',
-                '3m': '3 महीने',
-                '6m': '6 महीने',
-                '1y': '1 वर्ष',
-                all: 'सभी समय'
             }
         },
         contact: {
@@ -237,44 +227,44 @@ const translations = {
             beta: 'बीटा'
         },
         nav: {
-            home: 'होम',
-            prediction: 'अंदाज',
+            home: 'मुख्यपृष्ठ',
+            prediction: 'भविष्यवाणी',
             greeting: 'नमस्कार,',
             signIn: 'साइन इन करा'
         },
         hero: {
-            badge: 'कृषी मूल्य निर्धारणाचे भविष्य',
+            badge: 'कृषी किंमत निर्धारणाचे भविष्य',
             title: 'कृषी वस्तूंच्या किमतींचा अचूक अंदाज',
-            subtitle: 'आपल्या कृषी व्यवसायासाठी बाजारातील कल आणि डेटा-आधारित निर्णय घेण्यासाठी प्रगत एआय वापरा.'
+            subtitle: 'तुमच्या कृषी व्यवसायासाठी बाजार कलांचा अंदाज लावा आणि डेटा-आधारित निर्णय घ्या।'
         },
         commodities: {
             title: 'वस्तू निवडा',
-            subtitle: 'ऐतिहासिक किंमती पाहण्यासाठी विविध कृषी वस्तू निवडा.',
+            subtitle: 'ऐतिहासिक किमती पाहण्यासाठी विविध कृषी वस्तूंमधून निवडा.',
             categories: {
                 all: 'सर्व',
                 vegetables: 'भाज्या',
                 oilseeds: 'तेलबिया'
             },
-            noCommodities: 'या श्रेणीत कोणतीही वस्तू आढळली नाही'
+            noCommodities: 'या श्रेणीत कोणतीही वस्तू सापडली नाही'
         },
         historical: {
             title: 'ऐतिहासिक किंमत डेटा',
-            subtitle: 'भविष्यातील निर्णयांना माहिती देण्यासाठी मागील किंमत कलांचे विश्लेषण करा.'
+            subtitle: 'भविष्यातील निर्णयांसाठी मागील किंमत कलांचे विश्लेषण करा.'
         },
         prediction: {
-            pageTitle: 'किंमत अंदाज | AgriCode',
-            title: 'किंमत अंदाज',
-            subtitle: 'अचूक किंमत अंदाज मिळवण्यासाठी वस्तू आणि मापदंड निवडा',
+            pageTitle: 'किंमत भविष्यवाणी | AgriCode',
+            title: 'किंमत भविष्यवाणी',
+            subtitle: 'अचूक किंमत अंदाज मिळवण्यासाठी वस्तू आणि पॅरामीटर्स निवडा',
             selectCommodity: 'वस्तू निवडा',
-            parameters: 'अंदाज मापदंड',
-            timeframe: 'अंदाज कालावधी',
+            parameters: 'भविष्यवाणी पॅरामीटर्स',
+            timeframe: 'भविष्यवाणी कालावधी',
             days: {
                 '7': '7 दिवस',
                 '14': '14 दिवस',
                 '30': '30 दिवस',
                 '60': '60 दिवस'
             },
-            generate: 'अंदाज तयार करा',
+            generate: 'भविष्यवाणी तयार करा',
             marketAnalysis: {
                 title: 'बाजार विश्लेषण',
                 trend: 'बाजार कल विश्लेषण येथे दिसेल',
@@ -283,30 +273,20 @@ const translations = {
                 volatility: 'बाजार अस्थिरता'
             },
             tabs: {
-                prediction: 'किंमत अंदाज',
+                prediction: 'किंमत भविष्यवाणी',
                 historical: 'ऐतिहासिक डेटा'
             },
             insights: {
-                title: 'अंदाज अंतर्दृष्टी',
+                title: 'भविष्यवाणी अंतर्ज्ञान',
                 confidence: 'कल विश्वास',
                 minPrice: 'किमान किंमत',
                 maxPrice: 'कमाल किंमत',
                 factors: 'किंमतीवर परिणाम करणारे प्रमुख घटक'
-            },
-            historical: 'ऐतिहासिक',
-            predicted: 'अंदाजित',
-            generating: 'अंदाज तयार होत आहे...',
-            timeRanges: {
-                '1m': '1 महिना',
-                '3m': '3 महिने',
-                '6m': '6 महिने',
-                '1y': '1 वर्ष',
-                all: 'सर्व काळ'
             }
         },
         contact: {
             title: 'संपर्क करा',
-            subtitle: 'आम्हाला तुमच्याकडून ऐकायला आवडेल. आम्हाला संदेश पाठवा आणि आम्ही शक्य तितक्या लवकर प्रतिसाद देऊ.',
+            subtitle: 'आम्हाला तुमच्याकडून ऐकायला आवडेल. आम्हाला संदेश पाठवा आणि आम्ही लवकरात लवकर प्रतिसाद देऊ.',
             form: {
                 name: 'नाव',
                 email: 'ईमेल',
@@ -317,7 +297,7 @@ const translations = {
         },
         error404: {
             title: 'अरेरे! पृष्ठ सापडले नाही',
-            message: 'आपण शोधत असलेले पृष्ठ अस्तित्वात नाही किंवा हलविले गेले आहे.',
+            message: 'तुम्ही शोधत असलेले पृष्ठ अस्तित्वात नाही किंवा हलवले गेले आहे.',
             backHome: 'होमवर परत जा'
         },
         footer: {
@@ -332,18 +312,18 @@ const translations = {
             learnMore: 'अधिक जाणून घ्या',
             features: {
                 title: 'प्रगत अंदाज वैशिष्ट्ये',
-                subtitle: 'आमचे प्लॅटफॉर्म कृषी किंमत अंदाजासाठी सुधारित साधने प्रदान करते.',
+                subtitle: 'आमचा प्लॅटफॉर्म कृषी किंमत अंदाजासाठी परिष्कृत साधने प्रदान करतो.',
                 ai: {
-                    title: 'AI-संचालित अंदाज',
-                    description: 'उच्च अचूकतेसह कृषी वस्तूंच्या किमतींचा अंदाज लावण्यासाठी मशीन लर्निंग अल्गोरिदम वापरा.'
+                    title: 'एआय-आधारित अंदाज',
+                    description: 'कृषी वस्तूंच्या किमतींचा उच्च अचूकतेसह अंदाज लावण्यासाठी मशीन लर्निंग अल्गोरिदमचा वापर करा.'
                 },
                 charts: {
-                    title: 'इंटरॅक्टिव्ह चार्ट',
-                    description: 'सानुकूल इंटरॅक्टिव्ह चार्टसह ऐतिहासिक किंमत कल आणि भविष्यातील अंदाज दृश्यमान करा.'
+                    title: 'इंटरॅक्टिव्ह चार्ट्स',
+                    description: 'सानुकूल इंटरॅक्टिव्ह चार्टसह ऐतिहासिक किंमत कल आणि भविष्यातील अंदाज विजुअलाइज करा.'
                 },
                 mobile: {
-                    title: 'मोबाईल अनुकूल',
-                    description: 'डेस्कटॉप ते स्मार्टफोनपर्यंत कोणत्याही डिव्हाइसवर सहज अनुभवासह किंमत अंदाज मिळवा.'
+                    title: 'मोबाइल रेस्पॉन्सिव्ह',
+                    description: 'डेस्कटॉप ते स्मार्टफोनपर्यंत कोणत्याही डिव्हाइसवर सुरळीत अनुभवासह किंमत अंदाज मिळवा.'
                 }
             }
         }
@@ -363,45 +343,11 @@ function initLanguage() {
     // Set initial language
     setLanguage(currentLanguage);
     
-    // Set up language dropdown
-    const languageButton = document.getElementById('language-button');
-    const languageDropdown = document.getElementById('language-dropdown');
-    
-    if (languageButton && languageDropdown) {
-        // Update current language display
-        const currentLangElement = document.getElementById('current-language');
-        if (currentLangElement) {
-            const langNames = {
-                'en': 'English',
-                'hi': 'हिंदी',
-                'mr': 'मराठी'
-            };
-            currentLangElement.textContent = langNames[currentLanguage] || 'English';
-        }
-        
-        // Toggle dropdown visibility
-        languageButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            languageDropdown.classList.toggle('hidden');
-        });
-        
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!languageButton.contains(e.target) && !languageDropdown.contains(e.target)) {
-                languageDropdown.classList.add('hidden');
-            }
-        });
-        
-        // Set up language selection
-        const langLinks = languageDropdown.querySelectorAll('[data-lang]');
-        langLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const lang = link.getAttribute('data-lang');
-                setLanguage(lang);
-                languageDropdown.classList.add('hidden');
-            });
-        });
+    // Set up language selector
+    const languageSelector = document.getElementById('language-selector');
+    if (languageSelector) {
+        languageSelector.value = currentLanguage;
+        languageSelector.addEventListener('change', (e) => setLanguage(e.target.value));
     }
 }
 
@@ -411,17 +357,6 @@ function setLanguage(lang) {
     
     currentLanguage = lang;
     localStorage.setItem('language', lang);
-    
-    // Update current language display in dropdown
-    const currentLangElement = document.getElementById('current-language');
-    if (currentLangElement) {
-        const langNames = {
-            'en': 'English',
-            'hi': 'हिंदी',
-            'mr': 'मराठी'
-        };
-        currentLangElement.textContent = langNames[lang] || 'English';
-    }
     
     // Update all elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach(element => {

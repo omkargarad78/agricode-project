@@ -19,6 +19,7 @@ This web application predicts future onion prices using LSTM (Long Short-Term Me
 ## Installation
 
 1. Clone the repository:
+   <<<<<<< HEAD
 
 ```bash
 git clone https://github.com/omkargarad78/agricode-project.git
@@ -36,6 +37,11 @@ source .venv/bin/activate
 ```
 
 3. Install the required packages:
+   <<<<<<< HEAD
+
+=======
+
+> > > > > > > d11578f10e198a1918de50162496b78dc34977e7
 
 ```bash
 pip install -r requirements.txt
@@ -46,12 +52,22 @@ pip install -r requirements.txt
 1. Make sure your virtual environment is activated
 
 2. Run the Flask application:
+   <<<<<<< HEAD
+
+=======
+
+> > > > > > > d11578f10e198a1918de50162496b78dc34977e7
 
 ```bash
 python app.py
 ```
 
 3. Open your web browser and navigate to:
+   <<<<<<< HEAD
+
+=======
+
+> > > > > > > d11578f10e198a1918de50162496b78dc34977e7
 
 ```
 http://localhost:5000
@@ -69,6 +85,11 @@ http://localhost:5000
 ## Model Details
 
 The application uses an LSTM (Long Short-Term Memory) neural network to predict future onion prices. The model:
+<<<<<<< HEAD
+
+=======
+
+> > > > > > > d11578f10e198a1918de50162496b78dc34977e7
 
 - Uses 60 days of historical data to predict future prices
 - Is trained on daily price data
@@ -78,9 +99,19 @@ The application uses an LSTM (Long Short-Term Memory) neural network to predict 
 ## Translation Support
 
 The application supports three languages:
+<<<<<<< HEAD
+
+=======
+
+> > > > > > > d11578f10e198a1918de50162496b78dc34977e7
 
 - English (default)
 - Hindi
 - Marathi
 
+<<<<<<< HEAD
 Users can switch between languages using the language selector in the top-right corner of the page.
+=======
+Users can switch between languages using the language selector in the top-right corner of the page.
+
+> > > > > > > d11578f10e198a1918de50162496b78dc34977e7
